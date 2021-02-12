@@ -1,0 +1,56 @@
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  padding-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.list li {
+  background-color: skyblue;
+  display: inline-block;
+  border-radius: 20px;
+  text-align: center;
+  margin-right: 20px;
+  padding: 20px;
+}
+.deleteButton {
+  padding: 10px;
+  outline: none;
+  background-color: #fff;
+  border: 2px solid black;
+  transition: 0.4s ease-in-out;
+}
+.deleteButton:hover {
+  transform: scale(1.1);
+  background-color: red;
+}
+.appear {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.appearActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 250ms ease-in;
+}
+
+.enter {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 250ms ease-in;
+}
+
+.exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.exitActive {
+  transform: translateY(-100%);
+  opacity: 0.1;
+  transition: all 250ms ease-in;
+}

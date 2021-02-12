@@ -1,0 +1,23 @@
+.whoo {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: rgb(80, 121, 255);
+  border-bottom: 4px solid gold;
+  padding-left: 40px;
+}
+.whoo h1 {
+  margin: 0;
+  margin-bottom: 40px;
+  font-size: 45px;
+  text-transform: uppercase;
+  color: cadetblue;
+}
+.appear {
+  transform: translateX(-100%);
+  opacity: 0.1;
+}
+.appearActive {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 500ms ease-in;
+}
