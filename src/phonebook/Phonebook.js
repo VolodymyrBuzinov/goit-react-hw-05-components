@@ -3,11 +3,11 @@ import Section from '../phonebook/Section/Section'
 import Input from './Input/Input'
 import ContactsList from './ContactsList/ContactsList'
 import Filter from './Filter/Filter'
-import swal from 'sweetalert';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './phonebook.module.css';
 import { CSSTransition } from 'react-transition-group';
 import ErrorMessage from './messages/errorMessage';
+import SucessMessage from './messages/sucessMessage'
 
 export default class Phonebook extends Component {
     state = {
@@ -17,6 +17,7 @@ export default class Phonebook extends Component {
         name: '',
       number: '',
       error: false,
+      sucess: false,
     };
    componentDidUpdate(prevProps, prevState) {
      if (prevState.contacts !== this.state.contacts) {
@@ -46,7 +47,10 @@ export default class Phonebook extends Component {
       }, 2000)
       return;
     } else {
-      swal("Good job!", "You added contact!", "success");
+     this.setState({ sucess: true });
+      setTimeout(() => {
+        this.setState({sucess: false})
+      }, 2000)
     }
     const contacts = [
       ...this.state.contacts,
@@ -59,7 +63,10 @@ export default class Phonebook extends Component {
     this.setState({
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     });     
-    swal("Wow!", "You have delete a contact!", "success");
+    this.setState({ sucess: true });
+      setTimeout(() => {
+        this.setState({sucess: false})
+      }, 2000)
     } 
 
   changeFilter = filter => {
@@ -75,7 +82,7 @@ export default class Phonebook extends Component {
   };
   
   render() {  
-    const { filter, error } = this.state;
+    const { filter, error, sucess } = this.state;
 
     const visibleTasks = this.getVisibleTasks();
     return (<>
@@ -97,6 +104,9 @@ export default class Phonebook extends Component {
         </CSSTransition>
         <CSSTransition in={error === true} timeout={700} classNames={styles} unmountOnExit>
           <ErrorMessage/>
+        </CSSTransition>
+        <CSSTransition in={sucess === true} timeout={700} classNames={styles} unmountOnExit>
+          <SucessMessage/>
         </CSSTransition> 
         </Section>        
       </>
